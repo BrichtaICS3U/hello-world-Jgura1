@@ -7,9 +7,21 @@
 #You can read more about Heron's Method and other methods of computing square roots in the wikipedia entry here:
 #https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Babylonian_method
 #
+def absolute(x):
 
-def heron(x, accuracy=0.001):
+  if x>0:
+    return x
+  elif x<0:
+    return -x
+  else:
+    return 0
+
+def heron(x, g, accuracy=0.001):
   """Compute the square root of the number x using Heron's method. The accuracy is defaulted to three decimal places, but you
   can use a larger or smaller number if you wish. The smaller the number, the more time the calculation will take."""
-  
-  return 1
+
+  while abs(g**2 - x) >= accuracy:
+   g = (g+x/g)/ 2
+   
+  return round(g, 3)
+ 
